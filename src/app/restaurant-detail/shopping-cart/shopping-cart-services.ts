@@ -23,6 +23,9 @@ export class ShoppingCartService {
 
   decreaseQty(item: CartItem){
     item.quatity = item.quatity + 1
+    if (item.quatity === 0){
+      this.removeItem(item)
+    }
   }
 
   removeItem(item: CartItem){
