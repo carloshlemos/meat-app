@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/operator/distinctUntilChanged'
 import 'rxjs/add/operator/catch'
-import 'rxjs/add/observable/from'
+import "rxjs/add/observable/of";
 import { Observable } from 'rxjs/Observable'
 
 import { Restaurant } from './restaurant/restaurant.model'
@@ -54,7 +54,7 @@ export class RestaurantsComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap(searchTerm => 
         this.restaurantsService.restaurants(searchTerm)
-        .catch(error => Observable.from([])))
+        .catch(error => Observable.of([])))
       .subscribe(restaurants => this.restaurants = restaurants)
 
     this.restaurantsService.restaurants()
